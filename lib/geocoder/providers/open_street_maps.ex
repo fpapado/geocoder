@@ -110,6 +110,7 @@ defmodule Geocoder.Providers.OpenStreetMaps do
 
   defp request(path, params) do
     case request_all(path, params) do
+      {:ok, [[head | _] | _]} -> {:ok, head}
       {:ok, [head | _]} -> {:ok, head}
       {:ok, [head]} -> {:ok, head}
       {:ok, head} -> {:ok, head}
